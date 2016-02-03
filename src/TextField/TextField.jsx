@@ -61,6 +61,11 @@ const TextField = React.createClass({
      * The content to use for the floating label element.
      */
     floatingLabelText: React.PropTypes.node,
+    
+    /**
+     * Override shrink state of floating label
+     */
+    floatingLabelShrink: React.PropTypes.bool,
 
     /**
      * If true, the field receives the property width 100%.
@@ -432,6 +437,7 @@ const TextField = React.createClass({
       errorStyle,
       errorText,
       floatingLabelText,
+      floatingLabelShrink,
       fullWidth,
       hintText,
       hintStyle,
@@ -464,7 +470,7 @@ const TextField = React.createClass({
         muiTheme={this.state.muiTheme}
         style={this.mergeStyles(styles.floatingLabel, this.props.floatingLabelStyle)}
         htmlFor={inputId}
-        shrink={this.state.hasValue || this.state.isFocused}
+        shrink={floatingLabelShrink || this.state.hasValue || this.state.isFocused}
         disabled={disabled}
         onTouchTap={this.focus}
       >
